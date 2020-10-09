@@ -1,21 +1,104 @@
-<html>  
-  <head>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+
     <title>reefactor</title>
 
-    <script>
-    </script>  
+    <script type="text/javascript" src="jvgs/jquery.js"></script>
+    <script type="text/javascript" src="jvgs/jvgsc.min.js"></script>
+    <link href="jvgs/jvgs_main.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        .fsmax {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            z-index: 100;
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 0.9;
+            background: #444;
+        }
+    </style>
 
-  </head>
-<body>  
+    <!-- navigation bar -->
+    <style>
+        body {
+          font-family: "Lato", sans-serif;
+        }
+        
+        .sidenav {
+          width: 130px;
+          position: fixed;
+          z-index: 1;
+          top: 20px;
+          left: 10px;
+          overflow-x: hidden;
+          padding: 8px 0;
+          /*background: #eee;*/
+        }
+
+        .sidenav a {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 15px;
+          color: #007bff;
+          display: block;
+        }
+
+        .sidenav a:hover {
+          color: #064579;
+        }
+
+        .main {
+          margin-left: 200px; /* Same width as the sidebar + left position in px */
+          font-size: 18px; /* Increased text to enable scrolling */
+          padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }    
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="ui/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<!-- NOTE: jquery-3.4.1 is disabled because jvgsc.min.js already has old jquery -->
+	<!-- TODO: fix jQuery().animate() error and update to new jquery -->
+  <!-- <script src="ui/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+  <script src="ui/popper-1.16.0/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="ui/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<div class="sidenav">
+  
+    <!-- 
+    <a href="/brain_food_reference/">Read curated list of mental gems and streams to fuel your cognition</a>
+    <a href="https://github.com/reefactor/cppy3"> Embed Python into your C++ app in 10 minutes</a>
+    <a href="https://github.com/reefactor/org.backbone">Build your team encrypted private cloud, messenger, VPN and GitLab with org.backbone</a>
+    <a href="/zx-spectrum-instapack/">Play ZX-SPECTRUM - collection of best emulators, roms and software</a> 
+    -->
+
+</div>    
+
+<div class="main">
+<div class="container">
+
+  <br>
 
   <h3>Quo Vadis?</h3>
   <hr>
 
-  <ul>    
-    <li>
-      <a href="/zx-spectrum-instapack/">Play ZX-SPECTRUM - collection of best emulators, roms and software</a>
-    </li>
-
+  <div class="entry-content">
+    <ul class="list-unstyled">    
     <li>
       <a href="/brain_food_reference/">Read curated list of mental gems and streams to fuel your cognition</a>
     </li>
@@ -26,12 +109,241 @@
 
     <li>
       <a href="https://github.com/reefactor/org.backbone">Build your team encrypted private cloud, messenger, VPN and GitLab with org.backbone</a>
+    </li>    
+
+    <li>
+      <a href="/zx-spectrum-instapack/">Play ZX-SPECTRUM - collection of best emulators, roms and software</a>
     </li>
 
-    
+    <li>
+      <a href="#demo-player" class="its_showtime" >Enjoy demo player below</a>
+    </li>
   </ul>
+ </div>
 
-  <hr>
-</body>  
-  
+  <br>
+
+  <div class="" id="fscontainer">
+    <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 864px; height: 700px; position: relative; margin: auto; float: none;"></div>
+  </div>
+
+
+</div><!-- container -->
+</div><!-- main -->
+
+<script>
+var current_layout = 3;
+var mach = null;
+
+// callback used by jVGS
+function jxAction(action, data, cb) {}
+
+function loadRemoteUrl(url) {
+	JSZipUtils.getBinaryContent(url, function(error, arrayBuffer) {
+		if(error) {
+			alert('error', error)
+		} else {
+			loadFromArrayBuffer(arrayBuffer, url)
+		}
+	});
+}
+
+function loadFromArrayBuffer(arrayBuffer, filename) {
+   	var k = current_layout;
+   	if (k === 1000) {
+	    k = 3;
+   	}
+   	setLayout(current_layout);
+       
+   	// Scroll window to center
+   	var wh = jQuery(window).height();
+   	var gh = 224 * k + 28;
+       
+	if (mach) {
+           mach.focus();
+	}
+
+    // machine_type_id
+    // 3 128 basic
+    // 6 trdos
+    var e = mach;
+    var b = 1;
+    var c = false;
+    var d = false;
+
+    e.loaded_binary = {
+		machine_type_id: 6,
+		binary: filename
+	};
+    e.setup_machine();
+
+    var g = arrayBuffer;
+    var h = filename.split(".").pop().toLowerCase();
+    console.log('ext:', h)
+    AA = arrayBuffer;
+    if ("zip"===h) {
+        try {
+            var k=new JSZip(g),l="",m=0,n;
+            for(n in k.files) {
+                var t=0,q=n.toLowerCase(),h=n.split(".").pop().toLowerCase();
+                switch(h) { 
+                    case "scl":case "fdi":case "trd":t=100;break;
+                    case "tap":t=50;break;
+                    case "tzx":case "z80":t=25;break;
+                    case "rom":t=12;break;
+                    default:t=0
+                } 
+                0<t&&t>=m&&(t===m?q<l&&(l=n,m=t):(l=n,m=t))
+            }
+            if (m > 0) { 
+                var r=k.file(l).asUint8Array();
+                e.loadBinaryData(r,l.split(".").pop().toLowerCase(),b)
+            } else alert('No supported images found in ZIP file')
+        } catch(z) {
+            alert('Broken ZIP file')
+        }
+    } else {
+        e.loadBinaryData(new Uint8Array(g),h,b)
+        e.exec("loadcontinue")
+    }
+}
+
+function setLayout(z) {
+  console.log('setLayout', z)
+
+  // TODO fixme
+  return;
+
+    if (z === 1000) {
+        current_layout = z;
+    } else {
+        current_layout = Math.max(1, Math.min(3, z));
+    }
+    updateLayout();
+}
+
+function updateLayout() {
+	jQuery('#speccy_container').css('float', 'none');
+	
+	z = current_layout;
+	if (z === 1000) {
+		setAppletFullSize(1, z);
+	} else {
+		setAppletFullSize(0, z);
+	}
+}
+
+/**
+ * Sets up size of applet
+ * 
+ * @param {int} sz 0 = not full-size, 1 = full-size
+ * @param {int} cl Size of layout: 0 = auto, 1,2,3 = 1x,2x,3x respectively
+ */
+function setAppletFullSize(sz, cl) {
+    var dx, dy, k;
+    var toset = false;
+    if (sz == 1) {
+        // Make best fit size for fullscreen display
+        toset = 1;
+        k = Math.min(Math.floor(jQuery(window).width() / 288), Math.floor((jQuery(window).height() - 28) / 224));
+        jQuery('#fscontainer').addClass('fsmax');
+    } else {
+        if (sz == 0) {
+            // Detect max available size
+            toset = 1;
+            
+            k = Math.min(cl, Math.floor((jQuery('#content_wrapper').width() - 140) / 288));
+            if (k < 1) {
+                k = 1;	// Show anyway on small screens
+            }
+            
+            jQuery('#fscontainer').removeClass('fsmax');
+        }
+    }
+    if (toset) {
+        dx = k * 288;
+        dy = k * 224 + 28;
+        
+        if (mach) {
+            mach.setsize(k);
+        }
+        
+        jQuery('#speccy_container').css('width', dx + 'px').css('height', dy + 'px');
+    }
+}
+
+jQuery(document).ready(function(){
+
+// Default is 2
+current_layout = 3;
+
+
+// no sound due to chrome audiocontext policy
+bootSpectrum()
+
+//setLayout(current_layout);
+
+
+jQuery('.its_showtime').bind('click', function(){
+  bootDemomodeWithSound()
+})
+
+jQuery('#fscontainer').bind('click', function(){
+
+  bootDemomodeWithSound()
+
+	if (jQuery('#fscontainer').hasClass('fsmax')) {
+		setAppletFullSize(0, current_layout);
+	}
+});
+
+jQuery(window).resize(function(){
+  console.log('resize');
+	if (jQuery('#fscontainer').hasClass('fsmax')) {
+		setAppletFullSize(1, current_layout);
+	} else {
+		setAppletFullSize(0, current_layout);
+	}
+});
+
+
+function bootSpectrum() {
+    if (!window.mach) {
+        mach = new Spectrum();
+    }
+	mach.init(2, '#speccy_container', current_layout);
+	mach.run();
+	mach.loaded_binary = { machine_type_id: 6 };
+	mach.setup_machine();
+	mach.focus();
+}
+
+function bootDemomodeWithSound() {
+  // The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu
+  if (!window.demomodeWithSound) {
+    window.demomode = false
+    window.demomodeWithSound = true
+    bootSpectrum()
+    demoMode()
+  }
+}
+
+setTimeout(function() {
+  demoMode()
+}, 10000)
+
+function demoMode() {
+  if (window.demomode) {
+    return
+  }
+
+  window.demomode = true
+  // its demo time
+  loadRemoteUrl('/trashe.zip')
+}
+
+
+});
+</script>
+</body>
 </html>

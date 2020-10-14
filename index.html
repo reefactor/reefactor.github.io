@@ -77,6 +77,8 @@
   <script src="ui/popper-1.16.0/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="ui/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+  <!-- <script type="text/javascript" src="/jvgs/demoscene_player/condommed.js"></script> -->
+
 
 <div class="sidenav">
   
@@ -93,7 +95,6 @@
 <div class="container">
 
   <br>
-
   <h3>Quo Vadis?</h3>
   <hr>
 
@@ -116,7 +117,7 @@
     </li>
 
     <li>
-      <a href="#demo-player" class="its_showtime" >Enjoy demo player below</a>
+      <a href="#" class="its_showtime" >Enjoy ZX Speccy demoscene playlist shuffler below</a>
     </li>
   </ul>
  </div>
@@ -159,9 +160,9 @@ function loadFromArrayBuffer(arrayBuffer, filename) {
    	var wh = jQuery(window).height();
    	var gh = 224 * k + 28;
        
-	if (mach) {
-           mach.focus();
-	}
+    if (mach) {
+      mach.focus();
+    }
 
     // machine_type_id
     // 3 128 basic
@@ -172,9 +173,9 @@ function loadFromArrayBuffer(arrayBuffer, filename) {
     var d = false;
 
     e.loaded_binary = {
-		machine_type_id: 6,
-		binary: filename
-	};
+		  machine_type_id: 6,
+		  binary: filename
+	  };
     e.setup_machine();
 
     var g = arrayBuffer;
@@ -286,7 +287,11 @@ bootSpectrum()
 
 jQuery('.its_showtime').bind('click', function(){
   bootDemomodeWithSound()
+  shuffle_demoscene_playlist()
+
+  setAppletFullSize(1, 1)
 })
+
 
 jQuery('#fscontainer').bind('click', function(){
 
@@ -330,16 +335,42 @@ function bootDemomodeWithSound() {
 
 setTimeout(function() {
   demoMode()
-}, 10000)
+}, 30000)
+
+demoscene_playlist = [
+  emage_trashe, emage_condommed
+]
+
+function emage_trashe() {
+  loadRemoteUrl('/jvgs/demoscene_player/trashe.zip')
+}
+
+function emage_condommed() {
+  jQuery.getScript("/jvgs/demoscene_player/condommed.js").done(function(script_text, status) {
+    console.log('getscript status: ', status)
+
+    mach.setState(JSON.parse(condommed_demo_jvgs_state_json))
+  });
+}
+
+function shuffle_demoscene_playlist() {
+  var playlist_cursor = Math.round(Math.random() * 100) % demoscene_playlist.length
+  console.log('shuffle_demoscene_playlist position:', playlist_cursor)
+  
+  demoscene_playlist[playlist_cursor]()
+
+  setTimeout(function() {
+    shuffle_demoscene_playlist()
+  }, 10*60*1000)
+}
 
 function demoMode() {
   if (window.demomode) {
     return
   }
-
   window.demomode = true
-  // its demo time
-  loadRemoteUrl('/trashe.zip')
+
+  shuffle_demoscene_playlist()
 }
 
 

@@ -33,8 +33,8 @@
         }
     </style>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="ui/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="ui/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -74,10 +74,6 @@
     <li>
       <a href="/zx-spectrum-instapack/">Play ZX-SPECTRUM - collection of best emulators, roms and software</a>
     </li>
-
-    <li>
-      <a href="#" class="its_showtime" >Enjoy ZX Speccy demoscene playlist shuffler below</a>
-    </li>
   </ul>
  </div>
 
@@ -102,19 +98,39 @@
 
 
 <hr>
-<div class="row justify-content-md-center">
-  <div class="col-md-auto panel height-1">
+<div class="row justify-content-md-center" id="content_wrapper">
+
+  <div class="col-md-auto justify-content-left">
+    <p>
+      <a href="#demoscene_player" class="its_showtime btn btn-outline-primary btn-sm" >
+        <i class="fas fa-random"></i>
+        Shuffle playlist
+      </a> of ZX Speccy Demoscene
+    </p>
+
+    <p>
+      Enjoy it 
+      <a href="#demoscene_player" class="demoscene_player_fullscreen btn btn-outline-secondary btn-sm" >
+        <i class="fas fa-expand-arrows-alt"></i>
+        Fullscreen
+      </a>
+    </p>
+  </div>
+
+  <a name="demoscene_player"></a>
+  <div class="col-md-4 justify-content-right">
     <div class="" id="fscontainer">
       <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 864px; height: 700px; position: relative; margin: auto; float: none;"></div>
     </div>
   </div> 
-</div>   <!-- row -->
+</div>   <!-- row zx demoscene player -->
+
 
 </div><!-- container -->
 </div><!-- main -->
 
 <script>
-var current_layout = 3;
+var current_layout = 2;
 var mach = null;
 
 // callback used by jVGS
@@ -191,11 +207,7 @@ function loadFromArrayBuffer(arrayBuffer, filename) {
 }
 
 function setLayout(z) {
-  console.log('setLayout', z)
-
-  // TODO fixme
-  return;
-
+    console.log('setLayout', z)
     if (z === 1000) {
         current_layout = z;
     } else {
@@ -250,26 +262,26 @@ function setAppletFullSize(sz, cl) {
             mach.setsize(k);
         }
         
+        //jQuery('#fscontainer').css('width', dx + 'px').css('height', dy + 'px');
         jQuery('#speccy_container').css('width', dx + 'px').css('height', dy + 'px');
+
     }
 }
 
 jQuery(document).ready(function(){
 
-// Default is 2
-current_layout = 3;
-
-
 // no sound due to chrome audiocontext policy
 bootSpectrum()
 
-//setLayout(current_layout);
+setLayout(current_layout);
 
 
 jQuery('.its_showtime').bind('click', function(){
   bootDemomodeWithSound()
   shuffle_demoscene_playlist()
+})
 
+jQuery('.demoscene_player_fullscreen').bind('click', function(){
   setAppletFullSize(1, 1)
 })
 
@@ -334,8 +346,14 @@ function emage_condommed() {
   });
 }
 
+var playlist_cursor = -1
 function shuffle_demoscene_playlist() {
-  var playlist_cursor = Math.round(Math.random() * 100) % demoscene_playlist.length
+  var next_item = playlist_cursor;
+  while (next_item === playlist_cursor) {
+    next_item = Math.round(Math.random() * 100) % demoscene_playlist.length
+  }
+  playlist_cursor = next_item
+
   console.log('shuffle_demoscene_playlist position:', playlist_cursor)
   
   demoscene_playlist[playlist_cursor]()

@@ -331,19 +331,29 @@ setTimeout(function() {
 }, 30000)
 
 demoscene_playlist = [
-  emage_trashe, emage_condommed
+  emage_trashe, 
+  emage_condommed,
+  rush_mental_masturbations,
 ]
 
 function emage_trashe() {
   loadRemoteUrl('/jvgs/demoscene_player/trashe.zip')
 }
 
-function emage_condommed() {
+function emage_condommed_dump() {
   jQuery.getScript("/jvgs/demoscene_player/condommed.js").done(function(script_text, status) {
     console.log('getscript status: ', status)
 
     mach.setState(JSON.parse(condommed_demo_jvgs_state_json))
   });
+}
+
+function emage_condommed() {
+  loadRemoteUrl('/jvgs/demoscene_player/condommed.trd')
+}
+
+function rush_mental_masturbations() {
+  loadRemoteUrl('/jvgs/demoscene_player/mental_masturbations.trd')
 }
 
 var playlist_cursor = -1

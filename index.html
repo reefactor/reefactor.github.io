@@ -198,6 +198,19 @@
       </a> of ZX Speccy Demoscene
     </p>
 
+
+    <p>
+      <div class="row align-items-center">
+
+        <div class="col-xs-10 progress progress-striped active" style="width: 11rem;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="col-xs-2">&nbsp;&nbsp;<button class="cancel_autoplay btn btn-sm btn-outline-secondary">
+          <i class="far fa-times-circle"></i>Cancel autoplay</button></div>
+      
+      </div>
+    </p>
+
     <p>
       Enjoy it 
       <a href="#demoscene_player" class="demoscene_player_fullscreen btn btn-outline-secondary btn-sm" >
@@ -446,9 +459,35 @@ function bootDemomodeWithSound() {
   }
 }
 
-setTimeout(function() {
-  demoMode()
-}, 60000)
+var demoModeTimeout = 60
+
+function startDemoModeTimeoutTimer() {
+  var secondsLeft = demoModeTimeout;
+
+  function setAutoplayTimerProgress(percentage) {
+    jQuery('.progress-bar').css('width', percentage+'%').attr('aria-valuenow', percentage)
+  }
+
+  jQuery('.cancel_autoplay').bind('click', function() {
+    setAutoplayTimerProgress(0)
+    clearTimeout(window.demoModeTimeoutTimer)
+  })
+
+  checkDemoModeTimeout()
+
+  function checkDemoModeTimeout() {
+    if (secondsLeft < 0) {
+      demoMode()
+    } else {
+      secondsLeft = secondsLeft - 1
+      setAutoplayTimerProgress(parseInt(100 * secondsLeft / demoModeTimeout))
+      window.demoModeTimeoutTimer = setTimeout(checkDemoModeTimeout, 1000)
+    }
+  }
+}
+
+startDemoModeTimeoutTimer()
+
 
 demoscene_playlist = [
   emage_trashe, 

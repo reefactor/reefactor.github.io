@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>reefactor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,11 +11,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180825327-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'UA-180825327-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-180825327-1');
     </script>
 
     <style type="text/css">
@@ -28,236 +32,237 @@
             opacity: 0.9;
             background: #444;
         }
-
+        
         .box {
-          padding: 20px 20px 20px 20px;
-        }        
+            padding: 20px 20px 20px 20px;
+        }
     </style>
 
     <link rel="stylesheet" href="ui/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="ui/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
 
 </head>
+
 <body>
 
-<script src="ui/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="ui/popper-1.16.0/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="ui/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="ui/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="ui/popper-1.16.0/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="ui/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 
-<link href="jvgs/jvgs_main.css" type="text/css" rel="stylesheet">
-<script src="jvgs/jvgsc.min.js" type="text/javascript"></script>
+    <link href="jvgs/jvgs_main.css" type="text/css" rel="stylesheet">
+    <script src="jvgs/jvgsc.min.js" type="text/javascript"></script>
 
-<script src="demoscene_player.js" type="text/javascript"></script>
+    <script src="demoscene_player.js" type="text/javascript"></script>
 
-<div>
-<div class="container-fluid">
+    <div>
+        <div class="container-fluid">
 
-<div class="row justify-content-md-center">
+            <div class="row justify-content-md-center">
 
-<div class="col-md-auto panel height-1">
+                <div class="col-md-auto panel height-1">
 
-  <br>
-  <h3>Quo Vadis?</h3>
-  <hr>
+                    <br>
+                    <h3>Quo Vadis?</h3>
+                    <hr>
 
-  <h5 class="row justify-content-md-center box text-muted">Bicycle for the mind</h5>
-  
-  <div class="row justify-content-md-center">
-    <div class="card-deck">
+                    <h5 class="row justify-content-md-center box text-muted">Bicycle for the mind</h5>
 
-      <div class="card border-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Brainfood</div>
-        <div class="card-body text-secondary">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Read <a href="/brain_food_reference/">curated list of mental gems and streams</a> to fuel cognition.
-          </p>
+                    <div class="row justify-content-md-center">
+                        <div class="card-deck">
+
+                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Brainfood</div>
+                                <div class="card-body text-secondary">
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text">
+                                        Read <a href="/brain_food_reference/">curated list of mental gems and streams</a> to fuel cognition.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Infrastructure</div>
+                                <div class="card-body text-secondary">
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text">
+                                        Embed <a href="https://github.com/reefactor/cppy3">Python into C++ app</a> in 10 minutes.
+                                    </p>
+                                    <p class="card-text">
+                                        Build <a href="https://github.com/reefactor/org.backbone">team encrypted private cloud</a> with blackjack, messenger, VPN and GitLab.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- row -->
+
+            <hr>
+            <h5 class="row justify-content-md-center box text-muted">reason8.ai | autofaq.ai</h5>
+            <div class="row justify-content-md-center">
+                <div class="col-md-8 justify-content-left">
+                    <ul>
+                        <li>
+                            <p>
+                                <a href="https://techcrunch.com/2017/12/04/auroom-is-an-ai-assistant-for-managers-and-meetings">Reason8
+                  is an AI assistant for managers and meetings</a> at TechCrunch Disrupt Berlin 2017.
+                            </p>
+
+                        </li>
+                        <li>
+                            <p>
+                                <a href="https://habr.com/ru/company/croc/blog/522072/">
+                  Как роботизировать поддержку с помощью машинного обучения
+                </a> в компаниях
+                                <a href="https://www.cnews.ru/news/line/2019-08-14_alfabank_zapustil_intellektualnogo_hrbota">Альфа
+                  банк</a>,
+                                <a href="https://www.cnews.ru/news/line/2020-08-12_krok_robotiziroval_pervuyu">Мегафон</a>,
+                                <a href="https://rb.ru/opinion/bot-valera/">Райффайзенбанк</a>,
+                                <a href="https://www.cnews.ru/news/line/2019-09-25_set_1s_vnedrila_chatbota">1С</a>,
+                                <a href="https://fond.sk.ru/foundation/itc/b/news/archive/2020/08/20/fond-_1c20_skolkovo_1d20_-zapustil-robotizirovannuyu-sluzhbu-podderzhki-kompaniyrezidentov.aspx">Фонд
+                  Сколково</a>, и <a href="https://autofaq.ai">многих других</a> и попасть в <a href="https://career.habr.com/companies/autofaq">нашу команду</a>.
+
+                            </p>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- row -->
 
-      <div class="card bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Infrastructure</div>
-        <div class="card-body text-secondary">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            Embed <a href="https://github.com/reefactor/cppy3">Python into C++ app</a>  in 10 minutes.
-          </p>
-          <p class="card-text">
-            Build <a href="https://github.com/reefactor/org.backbone">team encrypted private cloud</a> with blackjack, messenger, VPN and GitLab.
-          </p>
+
+
+        <hr>
+        <h5 class="row justify-content-md-center box text-muted">DATADVANCE Research & Development</h5>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 panel height-1">
+                <p>
+                    <a href="https://www.datadvance.net/blog/tech-tips/2016/smartselection-in-predictive-modeling-toolkit.html">Build</a>,
+                    <a href="https://www.datadvance.net/blog/tech-tips/2017/model-validator.html">Validate</a>,
+                    <a href="https://www.datadvance.net/blog/tech-tips/2017/model-explorer.html">Explore</a> – Engineering publications series on research & development of
+                    <a href="https://www.datadvance.net/blog/tech-tips/2016/smartselection-in-predictive-modeling-toolkit.html">
+            Predictive Modeling toolkit</a>.
+                </p>
+
+                <a href="https://www.datadvance.net/ru/blog/tech-tips/2015/new-features-in-pseven-6-2.html">
+          Sample Viewer</a> for exploratory data analysis in industrial engineering.
+                <p>
+
+                </p>
+            </div>
+
+            <iframe src="https://www.slideshare.net/DennisShilko/slideshelf" width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
         </div>
-      </div>
-
     </div>
-  </div>
+    <!-- row -->
 
-</div>
-</div>   <!-- row -->
-
-<hr>
-<h5 class="row justify-content-md-center box text-muted">reason8.ai | autofaq.ai</h5>
-<div class="row justify-content-md-center">
-  <div class="col-md-8 justify-content-left">
-    <ul>
-      <li>
+    <hr>
+    <h5 class="row justify-content-md-center box text-muted">mail.ru search team</h5>
+    <div class="row justify-content-md-center">
         <p>
-          <a href="https://techcrunch.com/2017/12/04/auroom-is-an-ai-assistant-for-managers-and-meetings">Reason8 is an AI assistant for managers and meetings</a>       
-          at TechCrunch Disrupt Berlin 2017.
-        </p>  
-    
-      </li>
-      <li>
-        <p>
-          <a href="https://habr.com/ru/company/croc/blog/522072/">
-            Как роботизировать поддержку с помощью машинного обучения
-          </a>
-          
-          в компаниях
-          <a href="https://www.cnews.ru/news/line/2019-08-14_alfabank_zapustil_intellektualnogo_hrbota">Альфа банк</a>,
-          <a href="https://www.cnews.ru/news/line/2020-08-12_krok_robotiziroval_pervuyu">Мегафон</a>,
-          <a href="https://rb.ru/opinion/bot-valera/">Райффайзенбанк</a>,
-          <a href="https://www.cnews.ru/news/line/2019-09-25_set_1s_vnedrila_chatbota">1С</a>,
-          <a href="https://fond.sk.ru/foundation/itc/b/news/archive/2020/08/20/fond-_1c20_skolkovo_1d20_-zapustil-robotizirovannuyu-sluzhbu-podderzhki-kompaniyrezidentov.aspx">Фонд Сколково</a>,
-          и <a href="https://autofaq.ai">многих других</a>
-          
-          и попасть в <a href="https://career.habr.com/companies/autofaq">нашу команду</a>.
-          
+            Search team drama. From <a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B8%D1%81%D0%BA_Mail.ru#GoGo.Ru">gogo.ru</a> to <a href="https://habr.com/en/company/mailru/blog/149498/">go.mail.ru</a>.
         </p>
-            
-      </li>    
-    </ul>
-</div>
-</div> 
-</div>   <!-- row -->
-
-
-
-<hr>
-<h5 class="row justify-content-md-center box text-muted">DATADVANCE Research & Development</h5>
-<div class="row justify-content-md-center">
-  <div class="col-md-4 panel height-1">
-    <p>
-    <a href="https://www.datadvance.net/blog/tech-tips/2016/smartselection-in-predictive-modeling-toolkit.html">Build</a>, 
-    <a href="https://www.datadvance.net/blog/tech-tips/2017/model-validator.html">Validate</a>, 
-    <a href="https://www.datadvance.net/blog/tech-tips/2017/model-explorer.html">Explore</a>    
-     – Engineering publications series on research & development of 
-     <a href="https://www.datadvance.net/blog/tech-tips/2016/smartselection-in-predictive-modeling-toolkit.html">
-      Predictive Modeling toolkit</a>.
-    </p>
-
-    <a href="https://www.datadvance.net/ru/blog/tech-tips/2015/new-features-in-pseven-6-2.html">
-      Sample Viewer</a> for exploratory data analysis in industrial engineering.
-    <p>
-
-    </p>
-  </div> 
-
-  <iframe src="https://www.slideshare.net/DennisShilko/slideshelf" width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>  </div> 
-</div>   <!-- row -->
-
-<hr>
-<h5 class="row justify-content-md-center box text-muted">mail.ru search team</h5>
-<div class="row justify-content-md-center">
-    <p>
-      Search team drama.
-      From <a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B8%D1%81%D0%BA_Mail.ru#GoGo.Ru">gogo.ru</a>
-      to <a href="https://habr.com/en/company/mailru/blog/149498/">go.mail.ru</a>.  
-    </p>
-</div>   <!-- row -->
-
-
-<hr>
-<h5 class="row justify-content-md-center box text-muted">Undergraduate research and publications</h5>
-<div class="row justify-content-md-center">
-  <div class="col-md-8 justify-content-left">
-    <p>
-      <a href="https://github.com/reefactor/undergrad_crypto">XLong, XGaloisLib</a> 
-      C++ implementation of fast math routines for long integer operations and arithmetic in GF(2m). 2002-2004.
-    </p>  
-    <p>
-      <a href="https://elib.bsu.by/handle/123456789/92531">
-        Дискретное логарифмирование на мультипликативной группе для двухсоставного модуля RSA
-      </a> Сюрин, В. Н. Гаврилова, И. Л. Шилко, Д. В. библиотека БГУ 2007.
-    </p>
-  </div>
-</div> 
-</div>   <!-- row -->
-
-
-<hr>
-<h5 class="row justify-content-md-center box text-muted">Passion of youth</h5>
-<div class="row justify-content-md-center" id="content_wrapper">
-
-  <div class="col-md-auto justify-content-left">
-    <p>
-      <a href="#demoscene_player" class="its_showtime btn btn-outline-primary btn-sm" >
-        <i class="fas fa-random"></i>
-        Shuffle playlist
-      </a> of ZX Speccy Demoscene
-    </p>
-
-
-    <p>
-      <div class="row align-items-center">
-
-        <div class="col-xs-10 progress progress-striped active" style="width: 11rem;">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="col-xs-2">&nbsp;&nbsp;<button class="cancel_autoplay btn btn-sm btn-outline-secondary">
-          <i class="far fa-times-circle"></i>Cancel autoplay</button></div>
-      
-      </div>
-    </p>
-
-    <p>
-      Enjoy it 
-      <a href="#demoscene_player" class="demoscene_player_fullscreen btn btn-outline-secondary btn-sm" >
-        <i class="fas fa-expand-arrows-alt"></i>
-        Fullscreen
-      </a>
-    </p>
-
-    <p>
-      Checkout 
-      <a href="/zx-spectrum-instapack/">zx-spectrum-instapack</a> collection
-    </p>
-
-  </div>
-
-  <a name="demoscene_player"></a>
-  <div class="col-md-4 justify-content-right">
-    <div class="" id="fscontainer">
-      <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 864px; height: 700px; position: relative; margin: auto; float: none;"></div>
     </div>
-  </div> 
-</div>   <!-- row zx demoscene player -->
+    <!-- row -->
 
 
-</div><!-- container -->
-</div><!-- main -->
+    <hr>
+    <h5 class="row justify-content-md-center box text-muted">Undergraduate research and publications</h5>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 justify-content-left">
+            <p>
+                <a href="https://github.com/reefactor/undergrad_crypto">XLong, XGaloisLib</a> C++ implementation of fast math routines for long integer operations and arithmetic in GF(2m). 2002-2004.
+            </p>
+            <p>
+                <a href="https://elib.bsu.by/handle/123456789/92531">
+          Дискретное логарифмирование на мультипликативной группе для двухсоставного модуля RSA
+        </a> Сюрин, В. Н. Гаврилова, И. Л. Шилко, Д. В. библиотека БГУ 2007.
+            </p>
+        </div>
+    </div>
+    </div>
+    <!-- row -->
 
-<hr>
-<div class="row justify-content-md-center">
-<div class="container-fluid ">
-  <footer>
-    <div class="col-md-auto card-footer bg-secondary text-center">
 
-      <a href="https://github.com/reefactor" class="btn btn-outline-light btn-lg box" >
-        <i class="fab fa-github"></i>        
-      </a>
+    <hr>
+    <h5 class="row justify-content-md-center box text-muted">Passion of youth</h5>
+    <div class="row justify-content-md-center" id="content_wrapper">
 
-      <a href="https://www.linkedin.com/in/dennis-shilko-973b0522" class="btn btn-outline-light btn-lg box" >
-        <i class="fab fa-linkedin"></i>
-      </a>
+        <div class="col-md-auto justify-content-left">
+            <p>
+                <a href="#demoscene_player" class="its_showtime btn btn-outline-primary btn-sm">
+                    <i class="fas fa-random"></i> Shuffle playlist
+                </a> of ZX Speccy Demoscene
+            </p>
 
-      <a href="https://career.habr.com/sdennis" class="btn btn-outline-light btn-lg box" >
-        <i src="https://career.habr.com/images/favicons/favicon-32.png"></i>
-        Habr
-      </a>
-    </div>       
-  </footer>
-</div>
-</div>
+
+            <p>
+                <div class="row align-items-center">
+
+                    <div class="col-xs-10 progress progress-striped active" style="width: 11rem;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="col-xs-2">&nbsp;&nbsp;<button class="cancel_autoplay btn btn-sm btn-outline-secondary">
+            <i class="far fa-times-circle"></i> Cancel autoplay</button></div>
+
+                </div>
+            </p>
+
+            <p>
+                Enjoy it
+                <a href="#demoscene_player" class="demoscene_player_fullscreen btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-expand-arrows-alt"></i> Fullscreen
+                </a>
+            </p>
+
+            <p>
+                Checkout
+                <a href="/zx-spectrum-instapack/">zx-spectrum-instapack</a> collection
+            </p>
+
+        </div>
+
+        <a name="demoscene_player"></a>
+        <div class="col-md-4 justify-content-right">
+            <div class="" id="fscontainer">
+                <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 864px; height: 700px; position: relative; margin: auto; float: none;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- row zx demoscene player -->
+
+
+    </div>
+    <!-- container -->
+    </div>
+    <!-- main -->
+
+    <hr>
+    <div class="row justify-content-md-center">
+        <div class="container-fluid ">
+            <footer>
+                <div class="col-md-auto card-footer bg-secondary text-center">
+
+                    <a href="https://github.com/reefactor" class="btn btn-outline-light btn-lg box">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/dennis-shilko-973b0522" class="btn btn-outline-light btn-lg box">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://career.habr.com/sdennis" class="btn btn-outline-light btn-lg box">
+                        <i src="https://career.habr.com/images/favicons/favicon-32.png"></i> Habr
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
+
 </html>

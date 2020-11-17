@@ -123,7 +123,6 @@ function setLayout(z) {
 
 function updateLayout() {
     $("#speccy_container").css("float", "none");
-
     z = current_layout;
     if (z === 1000) {
         setAppletFullSize(1, z);
@@ -196,7 +195,6 @@ function initEventHandlers() {
     });
 
     $(window).resize(function() {
-        console.log("resize");
         if ($("#fscontainer").hasClass("fsmax")) {
             setAppletFullSize(1, current_layout);
         } else {
@@ -254,29 +252,26 @@ function startDemoModeTimeoutTimer() {
 }
 
 function emage_trashe() {
-    loadRemoteUrl("/jvgs/demoscene_player/trashe.zip");
+    loadRemoteUrl("/zxspectrum/demoscene_player/trashe.zip");
 }
 
 function emage_condommed_dump() {
-    jQuery
-        .getScript("/jvgs/demoscene_player/condommed.js")
+    $.getScript("/zxspectrum/demoscene_player/condommed.js")
         .done(function(script_text, status) {
-            console.log("getscript status: ", status);
-
             zxVM.setState(JSON.parse(condommed_demo_jvgs_state_json));
         });
 }
 
 function emage_condommed() {
-    loadRemoteUrl("/jvgs/demoscene_player/condommed.trd");
+    loadRemoteUrl("/zxspectrum/demoscene_player/condommed.trd");
 }
 
 function rush_mental_masturbations() {
-    loadRemoteUrl("/jvgs/demoscene_player/mental_masturbations.trd");
+    loadRemoteUrl("/zxspectrum/demoscene_player/mental_masturbations.trd");
 }
 
 function codebusters_eyeache() {
-    loadRemoteUrl("/jvgs/demoscene_player/eyeache.trd");
+    loadRemoteUrl("/zxspectrum/demoscene_player/eyeache.trd");
 }
 
 function shuffle_demoscene_playlist() {
@@ -285,8 +280,6 @@ function shuffle_demoscene_playlist() {
         next_item = Math.round(Math.random() * 100) % demoscene_playlist.length;
     }
     playlist_cursor = next_item;
-
-    console.log("shuffle_demoscene_playlist position:", playlist_cursor);
 
     demoscene_playlist[playlist_cursor]();
 

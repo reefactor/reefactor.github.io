@@ -236,6 +236,7 @@ function startDemoModeTimeoutTimer() {
     $(".cancel_autoplay").bind("click", function() {
         setAutoplayTimerProgress(0);
         clearTimeout(window.demoModeTimeoutTimer);
+        $(".autoplay-timer-bar").hide()
     });
 
     checkDemoModeTimeout();
@@ -275,6 +276,9 @@ function codebusters_eyeache() {
 }
 
 function shuffle_demoscene_playlist() {
+
+    $(".autoplay-timer-bar").hide()
+
     var next_item = playlist_cursor;
     while (next_item === playlist_cursor) {
         next_item = Math.round(Math.random() * 100) % demoscene_playlist.length;

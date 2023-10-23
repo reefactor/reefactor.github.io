@@ -1,6 +1,9 @@
-var current_layout = 2;
-var zxVM = null;
-var demoModeTimeout = 60;
+var zxVM = null
+var current_layout = 2
+
+const demoModeTimeoutSeconds = 30
+const shuffleSemoscenePlaylistIntervalSeconds = 20 * 60
+
 demoscene_playlist = [
     emage_trashe,
     emage_condommed,
@@ -225,7 +228,7 @@ function bootDemomodeWithSound() {
 }
 
 function startDemoModeTimeoutTimer() {
-    var secondsLeft = demoModeTimeout;
+    var secondsLeft = demoModeTimeoutSeconds;
 
     function setAutoplayTimerProgress(percentage) {
         $(".progress-bar")
@@ -246,7 +249,7 @@ function startDemoModeTimeoutTimer() {
             demoMode();
         } else {
             secondsLeft = secondsLeft - 1;
-            setAutoplayTimerProgress(parseInt((100 * secondsLeft) / demoModeTimeout));
+            setAutoplayTimerProgress(parseInt((100 * secondsLeft) / demoModeTimeoutSeconds));
             window.demoModeTimeoutTimer = setTimeout(checkDemoModeTimeout, 1000);
         }
     }
@@ -287,9 +290,7 @@ function shuffle_demoscene_playlist() {
 
     demoscene_playlist[playlist_cursor]();
 
-    setTimeout(function() {
-        shuffle_demoscene_playlist();
-    }, 10 * 60 * 1000);
+    setTimeout(shuffle_demoscene_playlist, shuffleSemoscenePlaylistIntervalSeconds * 1000);
 }
 
 function demoMode() {

@@ -13,13 +13,14 @@ demoscene_playlist = [
 var playlist_cursor = -1;
 
 
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', start())
+function startDemoscenePlayer() {
     // no sound due to chrome audiocontext policy
     bootSpectrum();
     setLayout(current_layout);
     startDemoModeTimeoutTimer();
     initEventHandlers();
-});
+}
 
 
 // callback used by jVGS

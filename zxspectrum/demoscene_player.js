@@ -13,7 +13,7 @@ demoscene_playlist = [
 var playlist_cursor = -1;
 
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // no sound due to chrome audiocontext policy
     bootSpectrum();
     setLayout(current_layout);
@@ -43,7 +43,7 @@ function loadFromArrayBuffer(arrayBuffer, filename) {
     setLayout(current_layout);
 
     // Scroll window to center
-    var wh = $(window).height();
+    var wh = window.innerHeight;
     var gh = 224 * k + 28;
 
     if (zxVM) {
@@ -125,7 +125,10 @@ function setLayout(z) {
 }
 
 function updateLayout() {
-    $("#speccy_container").css("float", "none");
+    var speccyContainer = document.getElementById("speccy_container");
+    if (speccyContainer) {
+        speccyContainer.style.float = "none";
+    }
     z = current_layout;
     if (z === 1000) {
         setAppletFullSize(1, z);
@@ -147,21 +150,27 @@ function setAppletFullSize(sz, cl) {
         // Make best fit size for fullscreen display
         toset = 1;
         k = Math.min(
-            Math.floor($(window).width() / 288),
-            Math.floor(($(window).height() - 28) / 224)
+            Math.floor(window.innerWidth / 288),
+            Math.floor((window.innerHeight - 28) / 224)
         );
-        $("#fscontainer").addClass("fsmax");
+        var fsContainer = document.getElementById("fscontainer");
+        if (fsContainer) {
+            fsContainer.classList.add("fsmax");
+        }
     } else {
         if (sz == 0) {
             // Detect max available size
             toset = 1;
-
-            k = Math.min(cl, Math.floor(($("#content_wrapper").width() - 140) / 288));
+            var contentWrapper = document.getElementById("content_wrapper");
+            var contentWidth = contentWrapper ? contentWrapper.offsetWidth : window.innerWidth;
+            k = Math.min(cl, Math.floor((contentWidth - 140) / 288));
             if (k < 1) {
                 k = 1; // Show anyway on small screens
             }
-
-            $("#fscontainer").removeClass("fsmax");
+            var fsContainer = document.getElementById("fscontainer");
+            if (fsContainer) {
+                fsContainer.classList.remove("fsmax");
+            }
         }
     }
     if (toset) {
@@ -173,35 +182,49 @@ function setAppletFullSize(sz, cl) {
         }
 
         //$('#fscontainer').css('width', dx + 'px').css('height', dy + 'px');
-        $("#speccy_container")
-            .css("width", dx + "px")
-            .css("height", dy + "px");
+        var speccyContainer = document.getElementById("speccy_container");
+        if (speccyContainer) {
+            speccyContainer.style.width = dx + "px";
+            speccyContainer.style.height = dy + "px";
+        }
     }
 }
 
 function initEventHandlers() {
-    $(".its_showtime").bind("click", function() {
-        bootDemomodeWithSound();
-        shuffle_demoscene_playlist();
+    var itsShowtimeElements = document.querySelectorAll(".its_showtime");
+    itsShowtimeElements.forEach(function(element) {
+        element.addEventListener("click", function() {
+            bootDemomodeWithSound();
+            shuffle_demoscene_playlist();
+        });
     });
 
-    $(".demoscene_player_fullscreen").bind("click", function() {
-        setAppletFullSize(1, 1);
+    var fullscreenElements = document.querySelectorAll(".demoscene_player_fullscreen");
+    fullscreenElements.forEach(function(element) {
+        element.addEventListener("click", function() {
+            setAppletFullSize(1, 1);
+        });
     });
 
-    $("#fscontainer").bind("click", function() {
-        bootDemomodeWithSound();
+    var fsContainer = document.getElementById("fscontainer");
+    if (fsContainer) {
+        fsContainer.addEventListener("click", function() {
+            bootDemomodeWithSound();
 
-        if ($("#fscontainer").hasClass("fsmax")) {
-            setAppletFullSize(0, current_layout);
-        }
-    });
+            if (fsContainer.classList.contains("fsmax")) {
+                setAppletFullSize(0, current_layout);
+            }
+        });
+    }
 
-    $(window).resize(function() {
-        if ($("#fscontainer").hasClass("fsmax")) {
-            setAppletFullSize(1, current_layout);
-        } else {
-            setAppletFullSize(0, current_layout);
+    window.addEventListener("resize", function() {
+        var fsContainer = document.getElementById("fscontainer");
+        if (fsContainer) {
+            if (fsContainer.classList.contains("fsmax")) {
+                setAppletFullSize(1, current_layout);
+            } else {
+                setAppletFullSize(0, current_layout);
+            }
         }
     });
 }
@@ -231,15 +254,23 @@ function startDemoModeTimeoutTimer() {
     var secondsLeft = demoModeTimeoutSeconds;
 
     function setAutoplayTimerProgress(percentage) {
-        $(".progress-bar")
-            .css("width", percentage + "%")
-            .attr("aria-valuenow", percentage);
+        var progressBars = document.querySelectorAll(".progress-bar");
+        progressBars.forEach(function(bar) {
+            bar.style.width = percentage + "%";
+            bar.setAttribute("aria-valuenow", percentage);
+        });
     }
 
-    $(".cancel_autoplay").bind("click", function() {
-        setAutoplayTimerProgress(0);
-        clearTimeout(window.demoModeTimeoutTimer);
-        $(".autoplay-timer-bar").hide()
+    var cancelAutoplayElements = document.querySelectorAll(".cancel_autoplay");
+    cancelAutoplayElements.forEach(function(element) {
+        element.addEventListener("click", function() {
+            setAutoplayTimerProgress(0);
+            clearTimeout(window.demoModeTimeoutTimer);
+            var autoplayTimerBars = document.querySelectorAll(".autoplay-timer-bar");
+            autoplayTimerBars.forEach(function(bar) {
+                bar.style.display = "none";
+            });
+        });
     });
 
     checkDemoModeTimeout();
@@ -260,10 +291,12 @@ function emage_trashe() {
 }
 
 function emage_condommed_dump() {
-    $.getScript("/zxspectrum/demoscene_player/condommed.js")
-        .done(function(script_text, status) {
-            zxVM.setState(JSON.parse(condommed_demo_jvgs_state_json));
-        });
+    var script = document.createElement("script");
+    script.src = "/zxspectrum/demoscene_player/condommed.js";
+    script.onload = function() {
+        zxVM.setState(JSON.parse(condommed_demo_jvgs_state_json));
+    };
+    document.head.appendChild(script);
 }
 
 function emage_condommed() {
@@ -280,7 +313,10 @@ function codebusters_eyeache() {
 
 function shuffle_demoscene_playlist() {
 
-    $(".autoplay-timer-bar").hide()
+    var autoplayTimerBars = document.querySelectorAll(".autoplay-timer-bar");
+    autoplayTimerBars.forEach(function(bar) {
+        bar.style.display = "none";
+    });
 
     var next_item = playlist_cursor;
     while (next_item === playlist_cursor) {

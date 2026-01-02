@@ -31,6 +31,95 @@
         .box {
             padding: 20px 20px 20px 20px;
         }
+
+        /* Navigation panel styles */
+        .nav-panel {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            min-width: 120px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-panel:hover,
+        .nav-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .nav-panel-trigger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            background: rgba(45, 45, 45, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-panel-trigger:hover {
+            background: rgba(45, 45, 45, 1);
+        }
+
+        .nav-panel-trigger i {
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-panel-button {
+            display: block;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 14px;
+            transition: background 0.2s ease, transform 0.2s ease;
+            text-align: center;
+        }
+
+        .nav-panel-button:hover {
+            background: #e9e9e9;
+            transform: translateX(3px);
+            text-decoration: none;
+            color: #2d2d2d;
+        }
+
+        /* Footer section styles */
+        #footer-section {
+            padding-top: 60px;
+            margin-top: 40px;
+        }
+
+        /* Larger footer buttons */
+        #footer-section .btn-lg {
+            padding: 1.0rem 2.0rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: 0.5rem;
+        }
+
+        #footer-section .btn-lg i {
+            font-size: 1.5rem;
+        }
     </style>
 
     <link href="ui/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -67,13 +156,17 @@
                     <!-- Subtitle rendered by layout.js -->
                     <div id="subtitle-section"></div>
                     <!-- Cards rendered by layout.js -->
-                    <div id="cards-section"></div>
+                    <div id="references-section">
+                        <div id="cards-section"></div>
+                    </div>
                 </div>
             </div>
             <!-- row -->
 
             <!-- All sections rendered by layout.js -->
-            <div id="sections-container"></div>
+            <div id="cv-section">
+                <div id="sections-container"></div>
+            </div>
 
 
     <!-- Passion of youth section rendered by layout.js -->
@@ -88,6 +181,39 @@
 
     <!-- Footer rendered by layout.js -->
     <div id="footer-section"></div>
+
+    <!-- Navigation Panel -->
+    <div class="nav-panel-trigger" id="nav-trigger">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-panel" id="nav-panel">
+        <a href="#references-section" class="nav-panel-button">References</a>
+        <a href="#cv-section" class="nav-panel-button">CV</a>
+        <a href="#footer-section" class="nav-panel-button">Profile</a>
+    </div>
+
+    <script>
+        // Navigation panel hover functionality
+        (function() {
+            const trigger = document.getElementById('nav-trigger');
+            const panel = document.getElementById('nav-panel');
+
+            if (trigger && panel) {
+                trigger.addEventListener('mouseenter', function() {
+                    panel.classList.add('visible');
+                });
+
+                panel.addEventListener('mouseleave', function() {
+                    panel.classList.remove('visible');
+                });
+
+                // Keep panel visible when hovering over it
+                panel.addEventListener('mouseenter', function() {
+                    panel.classList.add('visible');
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>

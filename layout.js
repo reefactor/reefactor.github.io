@@ -349,8 +349,8 @@
 
         // Render all sections
         const sectionsContainer = document.getElementById('sections-container');
-        if (sectionsContainer && siteContent.sections) {
-            siteContent.sections.forEach(section => {
+        if (sectionsContainer && siteContent.cv_sections) {
+            siteContent.cv_sections.forEach(section => {
                 if (section.id === 'passion') {
                     // Special handling for passion section
                     const passionContainer = document.getElementById('passion-section');

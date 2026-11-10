@@ -137,6 +137,78 @@
         #footer-section .btn-lg i {
             font-size: 1.5rem;
         }
+
+        /* Reference cards stay a desktop row; phones and iPads use one full-width column */
+        #cards-section .card {
+            width: 100%;
+            max-width: 21rem;
+        }
+
+        #fscontainer {
+            max-width: 100%;
+        }
+
+        #speccy_container {
+            max-width: 100%;
+        }
+
+        @media (max-width: 991.98px) {
+            .container-fluid > .row > .col-md-auto {
+                flex: 1 1 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            #cards-section .card-deck {
+                display: block;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #cards-section > .row,
+            .row .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #cards-section .card {
+                max-width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #content_wrapper {
+                display: block;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #content_wrapper > [class*="col-"] {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            #footer-section .card-footer {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            #footer-section .card-footer {
+                flex: 1 1 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            #footer-section .btn-lg {
+                flex: 1 1 100%;
+                padding: 0.85rem 1.25rem;
+            }
+        }
     </style>
 
     <link href="ui/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">

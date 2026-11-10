@@ -160,15 +160,26 @@ function setAppletFullSize(sz, cl) {
         }
     } else {
         if (sz == 0) {
-            // Detect max available size
+            // Detect max available size. Stacked layouts (phone, iPad portrait)
+            // size from the player column; side-by-side desktop keeps the
+            // previous allowance for the text column.
             toset = 1;
             var contentWrapper = document.getElementById("content_wrapper");
-            var contentWidth = contentWrapper ? contentWrapper.offsetWidth : window.innerWidth;
-            k = Math.min(cl, Math.floor((contentWidth - 140) / 288));
+            var fsContainer = document.getElementById("fscontainer");
+            var wrapperWidth = contentWrapper ? contentWrapper.clientWidth : window.innerWidth;
+            var columnWidth = fsContainer && fsContainer.parentElement ? fsContainer.parentElement.clientWidth : wrapperWidth;
+            var viewport = document.documentElement.clientWidth || window.innerWidth;
+            var stacked = columnWidth > wrapperWidth * 0.8;
+            var room = Math.max(288, viewport - 32);
+            if (!stacked && fsContainer && fsContainer.parentElement) {
+                var columnLeft = fsContainer.parentElement.getBoundingClientRect().left;
+                room = Math.min(room, viewport - Math.max(columnLeft, 0) - 16);
+            }
+            var available = stacked ? Math.min(room, columnWidth) : Math.min(room, wrapperWidth - 140);
+            k = Math.min(cl, Math.floor(available / 288));
             if (k < 1) {
                 k = 1; // Show anyway on small screens
             }
-            var fsContainer = document.getElementById("fscontainer");
             if (fsContainer) {
                 fsContainer.classList.remove("fsmax");
             }

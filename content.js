@@ -146,7 +146,7 @@ const siteContent = {
             <a name="demoscene_player"></a>
             <div class="col-md-4 justify-content-right">
                 <div class="" id="fscontainer">
-                    <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 864px; height: 700px; position: relative; margin: auto; float: none;"></div>
+                    <div id="speccy_container" class="shadow-lg bg-white rounded" style="width: 100%; max-width: 864px; height: auto; position: relative; margin: auto; float: none;"></div>
                 </div>
             </div>`
         }

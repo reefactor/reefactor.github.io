@@ -64,8 +64,7 @@
     // Render card
     function renderCard(cardData) {
         const card = createElement('div', {
-            className: 'card bg-light mb-3',
-            style: { maxWidth: '21rem' }
+            className: 'card bg-light mb-3'
         });
 
         const cardHeader = createElement('div', {
@@ -264,7 +263,7 @@
         container.appendChild(hr);
 
         const row = createElement('div', {
-            className: 'row justify-content-md-center'
+            className: 'row justify-content-center mx-0'
         });
 
         const containerFluid = createElement('div', {

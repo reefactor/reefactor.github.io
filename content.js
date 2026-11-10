@@ -158,20 +158,20 @@ const siteContent = {
                 href: "https://github.com/reefactor",
                 className: "btn btn-outline-light btn-lg box",
                 icon: "fab fa-github",
-                text: ""
+                text: "GitHub"
             },
             {
                 href: "https://www.linkedin.com/in/dennis-shilko-973b0522",
                 className: "btn btn-outline-light btn-lg box",
                 icon: "fab fa-linkedin",
-                text: ""
+                text: "LinkedIn"
             },
             {
                 href: "https://career.habr.com/sdennis",
                 className: "btn btn-outline-light btn-lg box",
                 icon: "",
                 imgSrc: "https://career.habr.com/images/favicons/favicon-32.png",
-                text: "Habr"
+                text: "Habr career"
             }
         ]
     }

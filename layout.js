@@ -41,11 +41,11 @@
     function renderHeader(container, headerData) {
         if (!headerData || !headerData.title) return;
 
-        const br = createElement('br');
-        const h3 = createElement('h3', null, headerData.title);
+        const h3 = createElement('h3', {
+            className: 'text-center mb-0'
+        }, headerData.title);
         const hr = createElement('hr');
 
-        container.appendChild(br);
         container.appendChild(h3);
         container.appendChild(hr);
     }
@@ -55,7 +55,7 @@
         if (!subtitle) return;
 
         const h5 = createElement('h5', {
-            className: 'row justify-content-md-center box text-muted'
+            className: 'text-center box text-muted mb-0'
         }, subtitle);
 
         container.appendChild(h5);
@@ -254,8 +254,6 @@
             row.innerHTML = passionData.content;
             container.appendChild(row);
         }
-
-        startDemoscenePlayer()
     }
 
     // Render footer
@@ -364,10 +362,19 @@
             });
         }
 
-        // Render footer
+        // Render footer before the demoscene player starts. Player init can throw
+        // and must not skip the profile links.
         const footerContainer = document.getElementById('footer-section');
         if (footerContainer) {
             renderFooter(footerContainer, siteContent.footer);
+        }
+
+        if (typeof startDemoscenePlayer === 'function') {
+            try {
+                startDemoscenePlayer();
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 

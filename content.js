@@ -44,7 +44,7 @@ const siteContent = {
             id: "xplain",
             title: '<a href="https://autofaq.ai/xplain">xplain</a>',
             items: [
-                `E<a href="https://autofaq.ai/xplain">xplain</a> your Website, Confluence, DOCX, XLSX, PDF - index & unite data sources and access them with LLM agent in dialog interface`
+                `E<a href="https://autofaq.ai/xplain">xplain</a> your Website, Confluence, DOCX, XLSX, PDF - unite data sources and run agentic AI worklflows`
             ]
         },
         {

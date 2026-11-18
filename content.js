@@ -72,17 +72,17 @@ const siteContent = {
         },
         {
             id: "elbrus-ascent-2018",
-            title: "Ascent Elbrus, 12 June 2018",
+            title: "Mount Elbrus ascent, 12 June 2018",
             content: `<div class="col-md-10 ascent-2018">
                 <p class="text-center">Western summit, 5642 m.</p>
                 <div class="ascent-photos">
                     <figure>
                         <img src="elbrus-snowcat-abandoned-2018-06-12.jpg" alt="Sitting on an abandoned red snowcat above the clouds on the way to Elbrus">
-                        <figcaption>Abandoned snowcat above the clouds</figcaption>
+                        <figcaption>Abandoned snowcat above the clouds. Southern slope of Elbrus</figcaption>
                     </figure>
                     <figure>
                         <img src="elbrus-top-2018-06-12.jpg" alt="The team on the western summit of Elbrus, 12 June 2018">
-                        <figcaption>Western summit</figcaption>
+                        <figcaption>Western summit. Alexey, Vlad, Ksenia, Gleb, Dennis</figcaption>
                     </figure>
                 </div>
             </div>`

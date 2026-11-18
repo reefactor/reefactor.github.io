@@ -44,7 +44,7 @@ const siteContent = {
             id: "xplain",
             title: '<a href="https://autofaq.ai/xplain">xplain</a>',
             items: [
-                `E<a href="https://autofaq.ai/xplain">xplain</a> your Website, Confluence, DOCX, XLSX, PDF - unite data sources and run agentic AI worklflows`
+                `<a href="https://autofaq.ai/xplain">XPLAIN</a> your Website, Confluence and doc files via unified agentic search for agentic AI worklflows`
             ]
         },
         {
@@ -69,6 +69,23 @@ const siteContent = {
                 `Result: <a href="https://results.runc.run/event/absolute_moscow_marathon_2019/result/9637/">Finish Time 4:11:47 Pace 5:59 min/km</a>`
             ]
 
+        },
+        {
+            id: "elbrus-ascent-2018",
+            title: "Ascent Elbrus, 12 June 2018",
+            content: `<div class="col-md-10 ascent-2018">
+                <p class="text-center">Western summit, 5642 m.</p>
+                <div class="ascent-photos">
+                    <figure>
+                        <img src="elbrus-snowcat-abandoned-2018-06-12.jpg" alt="Sitting on an abandoned red snowcat above the clouds on the way to Elbrus">
+                        <figcaption>Abandoned snowcat above the clouds</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="elbrus-top-2018-06-12.jpg" alt="The team on the western summit of Elbrus, 12 June 2018">
+                        <figcaption>Western summit</figcaption>
+                    </figure>
+                </div>
+            </div>`
         },
         {
             id: "reason8",

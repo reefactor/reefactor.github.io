@@ -44,7 +44,7 @@ const siteContent = {
             id: "xplain",
             title: '<a href="https://autofaq.ai/xplain">xplain</a>',
             items: [
-                `<a href="https://autofaq.ai/xplain">XPLAIN</a> your Website, Confluence and doc files via unified agentic search for agentic AI worklflows`
+                `One agentic search across your website, Confluence, and doc files. <a href="https://autofaq.ai/xplain">XPLAIN</a>.`
             ]
         },
         {
